@@ -1,0 +1,22 @@
+{
+  "name": "study_learnjs_nodejs",
+  "version": "1.0.0",
+  "description": "Some comments from command line",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliakseikrauchanka/study_learnjsru_nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aliakseikrauchanka/study_learnjsru_nodejs/issues"
+  },
+  "homepage": "https://github.com/aliakseikrauchanka/study_learnjsru_nodejs#readme",
+  "dependencies": {
+    "jscs": "^3.0.7"
+  }
+}
