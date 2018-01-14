@@ -1,5 +1,6 @@
 {
   "preset": "airbnb",
   "requireCurlyBraces": null,
-  "validateLineBreaks": "CRLF"
+  "validateLineBreaks": "CRLF",
+  "validateIndentation": 4
 }
