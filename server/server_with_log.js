@@ -1,7 +1,7 @@
 var http = require('http');
 var debug = require('debug')('server');
 
-console.log(process.env.DEBUG);
+// console.log(process.env.DEBUG);
 
 var server = new http.Server();
 server.on('request', require('./request'));
