@@ -1,8 +1,12 @@
 let fs = require('fs');
 
-fs.readFile(__filename, /*{ encoding: 'utf-8' }, */function (err, data) {
+fs.readFile('blablabla', function (err, data) {
     if (err) {
-        console.log(err);
+        if (err.code === 'ENOENT') {
+            console.log(err.message);
+        } else {
+            console.log(err);
+        }
     } else {
         console.log(data.toString());
     }
