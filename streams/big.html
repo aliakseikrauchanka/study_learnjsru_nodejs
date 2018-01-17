@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+<html itemscope="itemscope" itemtype="http://schema.org/Article" lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>ECMA-262-5 in detail. Chapter 0. Introduction. &#8211; .ds laboratory</title>
+    <link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link rel="pingback" href="http://dmitrysoshnikov.com/xmlrpc.php" />
+    <!--[if lt IE 9]>
+    <script src="http://dmitrysoshnikov.com/wp-content/themes/independent-publisher/js/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <link rel='dns-prefetch' href='//s.w.org' />
+    <link rel="alternate" type="application/rss+xml" title=".ds laboratory &raquo; Feed" href="http://dmitrysoshnikov.com/feed/" />
+    <link rel="alternate" type="application/rss+xml" title=".ds laboratory &raquo; Comments Feed" href="http://dmitrysoshnikov.com/comments/feed/" />
+    <link rel="alternate" type="application/rss+xml" title=".ds laboratory &raquo; ECMA-262-5 in detail. Chapter 0. Introduction. Comments Feed" href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-0-introduction/feed/" />
+    <script type="text/javascript">
+        window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/dmitrysoshnikov.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.2"}};
+        !function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56794,8205,9794,65039],[55358,56794,8203,9794,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+    </script>
+    <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+    </style>
+    <link rel='stylesheet' id='dpsp-frontend-style-css'  href='http://dmitrysoshnikov.com/wp-content/plugins/social-pug/assets/css/style-frontend.css?ver=4.9.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='genericons-css'  href='http://dmitrysoshnikov.com/wp-content/plugins/jetpack/_inc/genericons/genericons/genericons.css?ver=3.1' type='text/css' media='all' />
+    <link rel='stylesheet' id='independent-publisher-style-css'  href='http://dmitrysoshnikov.com/wp-content/themes/independent-publisher/style.css?ver=4.9.2' type='text/css' media='all' />
+    <script type='text/javascript' src='http://dmitrysoshnikov.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+    <script type='text/javascript' src='http://dmitrysoshnikov.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+    <script type='text/javascript' src='http://dmitrysoshnikov.com/wp-content/plugins/social-pug/assets/js/front-end.js?ver=4.9.2'></script>
+    <script type='text/javascript' src='http://dmitrysoshnikov.com/wp-content/themes/independent-publisher/js/fade-post-title.js?ver=4.9.2'></script>
+    <script type='text/javascript' src='http://dmitrysoshnikov.com/wp-content/themes/independent-publisher/js/enhanced-comment-form.js?ver=1.0'></script>
+    <link rel='https://api.w.org/' href='http://dmitrysoshnikov.com/wp-json/' />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://dmitrysoshnikov.com/xmlrpc.php?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://dmitrysoshnikov.com/wp-includes/wlwmanifest.xml" />
+    <link rel='prev' title='ECMA-262-3 in detail. Chapter 8. Evaluation strategy.' href='http://dmitrysoshnikov.com/ecmascript/chapter-8-evaluation-strategy/' />
+    <link rel='next' title='Тонкости ECMA-262-5. Часть 1. Свойства и дескрипторы свойств' href='http://dmitrysoshnikov.com/ecmascript/ru-es5-chapter-1-properties-and-property-descriptors/' />
+    <meta name="generator" content="WordPress 4.9.2" />
+    <link rel="canonical" href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-0-introduction/" />
+    <link rel='shortlink' href='http://wp.me/pPEDO-iS' />
+    <link rel="alternate" type="application/json+oembed" href="http://dmitrysoshnikov.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fdmitrysoshnikov.com%2Fecmascript%2Fes5-chapter-0-introduction%2F" />
+    <link rel="alternate" type="text/xml+oembed" href="http://dmitrysoshnikov.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fdmitrysoshnikov.com%2Fecmascript%2Fes5-chapter-0-introduction%2F&#038;format=xml" />
+    <style type="text/css" data-source="Social Pug"></style><meta name="twitter:card" 		content="summary" /><meta property="og:url"			content="http://dmitrysoshnikov.com/ecmascript/es5-chapter-0-introduction/" /><meta property="og:type"			content="article" /><meta property="og:title"			content="ECMA-262-5 in detail. Chapter 0. Introduction." /><meta property="og:description" 	content="We have finished analysis of the most important parts and theoretical aspects concerning 3rd edition" /><meta property="og:image" 		content="" />
+
+    <!--WordPress Theme Customizer CSS-->
+    <style type="text/css">
+
+        /* Background Color */
+
+
+        /* Comment Form Background Color */
+
+
+        /* Text Color */
+
+
+        /* Link Color */
+
+        a, a:visited, a:hover, a:focus, a:active { color:#284a66; }
+        .enhanced-excerpts .enhanced-excerpt-read-more a, .enhanced-excerpts .enhanced-excerpt-read-more a:hover { color:#284a66; }
+        .post-excerpts .sticky.format-standard .entry-content a, .post-excerpts .sticky.format-standard .entry-content a:focus, .post-excerpts .sticky.format-standard .entry-content a:hover, .post-excerpts .sticky.format-standard .entry-content a:active, .post-excerpts .sticky.format-standard .entry-content a:visited { color:#284a66; }
+        .post-excerpts .format-standard.show-full-content-first-post .entry-content a { color:#284a66; }
+        .post-excerpts .format-standard .entry-content a.moretag { color:#284a66; }
+        .post-excerpts .format-standard .entry-content a.more-link { color:#284a66; }
+        .read-more a, .read-more a:hover { color:#284a66; }
+        .entry-title a:hover { color:#284a66; }
+        .entry-meta a:hover { color:#284a66; }
+        .site-footer a:hover { color:#284a66; }
+        blockquote { border-color:#284a66; }
+        #infinite-footer .blog-credits a, #infinite-footer .blog-credits a:hover { color:#284a66; }
+        #nprogress .bar { background:#284a66; }
+        #nprogress .spinner-icon { border-top-color:#284a66; }
+        #nprogress .spinner-icon { border-left-color:#284a66; }
+        #nprogress .peg { box-shadow:0 0 10px #284a66, 0 0 5px #284a66; }
+
+        button, html input[type="button"], input[type="reset"], input[type="submit"], button:hover, html input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover { background:#284a66; /* Old browsers */ }
+        button, html input[type="button"], input[type="reset"], input[type="submit"], button:hover, html input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover { background: -moz-linear-gradient(top, #284a66 60%, #284a66 100%); /* FF3.6+ */ }
+        button, html input[type="button"], input[type="reset"], input[type="submit"], button:hover, html input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover { background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, #284a66), color-stop(100%, #284a66)); /* Chrome,Safari4+ */ }
+        button, html input[type="button"], input[type="reset"], input[type="submit"], button:hover, html input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover { background: -webkit-linear-gradient(top, #284a66 60%, #284a66 100%); /* Chrome10+,Safari5.1+ */ }
+        button, html input[type="button"], input[type="reset"], input[type="submit"], button:hover, html input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover { background: -o-linear-gradient(top, #284a66 60%, #284a66 100%); /* Opera 11.10+ */ }
+        button, html input[type="button"], input[type="reset"], input[type="submit"], button:hover, html input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover { background: -ms-linear-gradient(top, #284a66 60%, #284a66 100%); /* IE10+ */ }
+        button, html input[type="button"], input[type="reset"], input[type="submit"], button:hover, html input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover { background: linear-gradient(top, #284a66 60%, #284a66 100%); /* W3C */ }
+
+        /* Header Text Color */
+
+
+        /* Primary Meta Text Color */
+
+
+        /* Secondary Meta Text Color */
+
+
+    </style>
+    <!--/WordPress Theme Customizer CSS-->
+
+    <style type="text/css" id="syntaxhighlighteranchor"></style>
+</head>
+
+<body class="post-template-default single single-post postid-1170 single-format-standard single-column-layout" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+
+
+
+<div id="page" class="hfeed site">
+    <header id="masthead" class="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+
+        <div class="site-header-info">
+            <a class="site-logo" href="http://dmitrysoshnikov.com">
+                <img alt='' src='http://2.gravatar.com/avatar/882f228c4993ccf0a86e96394636415c?s=100&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/882f228c4993ccf0a86e96394636415c?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' />		</a>
+
+            <h1 class="site-title"><span class="byline"><span class="author vcard"><a class="url fn n" href="http://dmitrysoshnikov.com" title="View all posts by Dmitry Soshnikov" rel="author">Dmitry Soshnikov</a></span></span></h1>
+            <h2 class="site-description">Software engineer interested in learning and education. Sometimes blog on topics of programming languages theory, compilers, and ECMAScript.</h2>
+
+
+            <div class="site-published-separator"></div>
+            <h2 class="site-published">Published</h2>
+            <h2 class="site-published-date"><a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-0-introduction/" title="ECMA-262-5 in detail. Chapter 0. Introduction." rel="bookmark"><time class="entry-date" datetime="2010-04-27T18:39:54+00:00" pubdate="pubdate">2010-04-27</time></a></h2>
+
+        </div>
+
+
+    </header>
+    <!-- #masthead .site-header -->
+
+    <div id="main" class="site-main">
+        <div id="primary" class="content-area">
+            <main id="content" class="site-content" role="main">
+
+
+
+                <article id="post-1170" class="post-1170 post type-post status-publish format-standard hentry category-ecmascript tag-es-5 tag-ecmascript" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+                    <header class="entry-header">
+                        <h2 class="entry-title-meta">
+			<span class="entry-title-meta-author">
+				<span class="byline"><span class="author vcard"><a class="url fn n" href="http://dmitrysoshnikov.com" title="View all posts by Dmitry Soshnikov" rel="author">Dmitry Soshnikov</a></span></span>			</span>
+                            in <a href="http://dmitrysoshnikov.com/category/ecmascript/" title="View all posts in ECMAScript">ECMAScript</a>			<span class="entry-title-meta-post-date">
+				<span class="sep"> | </span>
+				<a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-0-introduction/" title="ECMA-262-5 in detail. Chapter 0. Introduction." rel="bookmark"><time class="entry-date" datetime="2010-04-27T18:39:54+00:00" pubdate="pubdate">2010-04-27</time></a>			</span>
+                        </h2>
+                        <h1 class="entry-title" itemprop="name">ECMA-262-5 in detail. Chapter 0. Introduction.</h1>
+                    </header>
+                    <!-- .entry-header -->
+                    <div class="entry-content" itemprop="mainContentOfPage">
+                        <div id="dpsp-content-top" class="dpsp-content-wrapper dpsp-shape-rounded dpsp-column-auto dpsp-has-spacing dpsp-show-on-mobile dpsp-button-style-1 dpsp-has-icon-background dpsp-has-button-background"><ul class="dpsp-networks-btns-wrapper dpsp-networks-btns-content"><li><a rel="nofollow" href="https://twitter.com/intent/tweet?text=ECMA-262-5+in+detail.+Chapter+0.+Introduction.&url=http%3A%2F%2Fdmitrysoshnikov.com%2Fecmascript%2Fes5-chapter-0-introduction%2F" class="dpsp-network-btn dpsp-twitter dpsp-no-label dpsp-first"><span class="dpsp-network-label-wrapper"><span class="dpsp-network-label"></span></span></a></li><li><a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdmitrysoshnikov.com%2Fecmascript%2Fes5-chapter-0-introduction%2F&t=ECMA-262-5+in+detail.+Chapter+0.+Introduction." class="dpsp-network-btn dpsp-facebook dpsp-no-label"><span class="dpsp-network-label-wrapper"><span class="dpsp-network-label"></span></span></a></li><li><a rel="nofollow" href="https://plus.google.com/share?url=http%3A%2F%2Fdmitrysoshnikov.com%2Fecmascript%2Fes5-chapter-0-introduction%2F" class="dpsp-network-btn dpsp-google-plus dpsp-no-label dpsp-last"><span class="dpsp-network-label-wrapper"><span class="dpsp-network-label"></span></span></a></li></ul></div><p>We have finished analysis of the most important parts and theoretical aspects concerning 3rd edition of the ECMA-262 specification, i.e. standard devoted ECMAScript programming language. We have done and achieved a lot. Originally written in Russian, this series after more than half an year has been translated to several languages, what allowed this information to be shared with JavaScript developers and with everyone who interested in deep ECMAScript allover the world.<span id="more-1170"></span></p>
+                        <p>Today when the 5th edition is released it is time to start analysis of this new version of the specification. At the moment it still isn&#8217;t implemented widely in the complete view, although there are already many implementations which have the new functionality &#8212; at least partly.</p>
+                        <p>As we know ECMAScript 4 (aka JavaScript 2.0) with concept of classes has been canceled. Instead the new version is improved version of the ECMA-262-3 and is called as ECMAScript 5. For shortness we will use <abbr title="ECMAScript 5th edition">ES5</abbr> concept and comparing with 3rd edition corresponding &#8212; <abbr title="ECMAScript 3rd edition">ES3</abbr>.</p>
+                        <p>I thought how to manage the new series and descriptions of related chapters in the most convenient way. On one hand, it is the new standard which could deserve complete separate series with all chapters. But then many of them will repeat descriptions of <abbr title="ECMAScript 3rd edition">ES3</abbr> series. On the other hand, as we mentioned, the 5th edition is just the improvement of the previous 3rd version &#8212; without completely new and innovating approach. We can treat <abbr title="ECMAScript 5th edition">ES5</abbr> as an extension of the <abbr title="ECMAScript 3rd edition">ES3</abbr>. And from this viewpoint many already discussed aspects are the same as for the ECMA-262-3. Nevertheless, some concepts of ECMA-262-5 have new terminology and implementation. And exactly these new details are the most interesting for us.</p>
+                        <p>Taking into account this fact, I decided to explain separately only these distinctions and with referencing to corresponding chapters of the ECMA-262-3 series. Moreover, <abbr title="ECMAScript 3rd edition">ES3</abbr> still rocks (and will until web-developers support some old browsers; although, I am sure that will be made some acceptable shims to imitate <abbr title="ECMAScript 5th edition">ES5</abbr> approach using <abbr title="ECMAScript 3rd edition">ES3</abbr>) and from this point of view understanding how works <abbr title="ECMAScript 3rd edition">ES3</abbr> is also important and useful. So for those who will start learning of ECMAScript from this new ECMA-262-5 series, every chapter will contain sort of dependencies list, i.e. chapters of ECMA-262-3 series which should be already read for complete understanding of the current chapter.</p>
+                        <p><em>To whom this series is recommended:</em></p>
+                        <p>As before, first of all for those who want to learn JavaScript deeply and professionally &#8212; at theoretical level of the specification. Level of explanation still will be academical, which means we won&#8217;t use some simplified terminology without subtleties for the basic (but as usually is &#8212; superficial) understanding of the ECMAScript nature. Also this series isn&#8217;t a practical &#8220;copy-paste&#8221; solutions resource and not the textbook for novices. Therefore it is desirable to have already some experience in ECMAScript and programming as a whole. And for beginners I recommend to read first the basic articles on JavaScript, to understand the language in general, and then, if there will be an interest, to return to more detailed ECMAScript studying.</p>
+                        <p><em>Regards,<br />
+                            Dmitry Soshnikov</em></p>
+                        <p><code>Chapters of the series:</code></p>
+                        <ul>
+                            <li><a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-1-properties-and-property-descriptors/">Chapter 1. Properties and Property Descriptors</a></li>
+                            <li><a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-2-strict-mode/">Chapter 2. Strict Mode</a></li>
+                            <li><a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-3-1-lexical-environments-common-theory/">Chapter 3.1. Lexical environments: Common Theory</a></li>
+                            <li><a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-3-2-lexical-environments-ecmascript-implementation/">Chapter 3.2. Lexical environments: ECMAScript implementation</a></li>
+                        </ul>
+                        <p><br clear="both" /></p>
+                    </div>
+                    <!-- .entry-content -->
+
+                    <div class="post-author-bottom">
+                        <div class="post-author-card">
+                            <a class="site-logo" href="http://dmitrysoshnikov.com">
+                                <img alt='' src='http://2.gravatar.com/avatar/882f228c4993ccf0a86e96394636415c?s=100&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/882f228c4993ccf0a86e96394636415c?s=200&#038;d=mm&#038;r=g 2x' class='avatar avatar-100 photo' height='100' width='100' />				</a>
+
+                            <div class="post-author-info">
+                                <h1 class="site-title">
+                                    <span class="byline"><span class="author vcard"><a class="url fn n" href="http://dmitrysoshnikov.com" title="View all posts by Dmitry Soshnikov" rel="author">Dmitry Soshnikov</a></span></span>					</h1>
+
+                                <h2 class="site-description">Software engineer interested in learning and education. Sometimes blog on topics of programming languages theory, compilers, and ECMAScript.</h2>
+                            </div>
+                            <div class="post-published-date">
+                                <h2 class="site-published">Published</h2>
+                                <h2 class="site-published-date"><a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-0-introduction/" title="ECMA-262-5 in detail. Chapter 0. Introduction." rel="bookmark"><time class="entry-date" datetime="2010-04-27T18:39:54+00:00" pubdate="pubdate">2010-04-27</time></a></h2>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .post-author-bottom -->
+
+                    <footer class="entry-meta">
+
+                        <div id="share-comment-button">
+                            <button>
+                                <i class="share-comment-icon"></i>Write a Comment				</button>
+                        </div>
+
+                    </footer>
+                    <!-- .entry-meta -->
+
+                </article><!-- #post-1170 -->
+
+
+                <div id="commentform-top"></div> <!-- do not remove; used by jQuery to move the comment reply form here -->
+                <div id="respond" class="comment-respond">
+                    <h3 id="reply-title" class="comment-reply-title"> <small><a rel="nofollow" id="cancel-comment-reply-link" href="/ecmascript/es5-chapter-0-introduction/" style="display:none;">Cancel Reply</a></small></h3>			<form action="http://dmitrysoshnikov.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+                    <div id="main-reply-title"><h3>Write a Comment</h3></div><div class="comment-form-reply-title"><p>Comment</p></div><p class="comment-form-comment" id="comment-form-field"><textarea id="comment" name="comment" cols="60" rows="6" aria-required="true"></textarea></p><p class="comment-form-author"><label for="author">Name</label><input id="author" name="author" type="text" value="aliaksei krauchanka" aria-required='true' /></p>
+                    <p class="comment-form-email"><label for="email">Email</label><input id="email" name="email" type="text" value="aliaksei.krauchanka@gmail.com" aria-required='true' /></p>
+                    <p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" /></p>
+                    <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Submit Comment" /> <input type='hidden' name='comment_post_ID' value='1170' id='comment_post_ID' />
+                        <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+                    </p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="56a964f8c4" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="219"/></p>			</form>
+                </div><!-- #respond -->
+
+
+                <div id="comments" class="comments-area">
+
+
+
+                    <ol class="commentlist">
+                        <li class="comment even thread-even depth-1" id="li-comment-317">
+                            <article id="comment-317" class="comment">
+                                <footer>
+                                    <div class="comment-author vcard">
+                                        <img alt='' src='http://1.gravatar.com/avatar/1883b6fc2971d614827a63226dbda609?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/1883b6fc2971d614827a63226dbda609?s=96&#038;d=mm&#038;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />					<cite class="fn">Ron Marco</cite>									</div>
+                                    <!-- .comment-author .vcard -->
+                                    <div class="comment-meta commentmetadata">
+                                        <a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-0-introduction/#comment-317">
+                                            <time pubdate datetime="2010-04-27T21:55:52+00:00">
+                                                2010-04-27						</time>
+                                        </a>
+                                    </div>
+                                    <!-- .comment-meta .commentmetadata -->
+                                </footer>
+
+                                <div class="comment-content "><p>Great!<br />
+                                    ECMA-262-3 articles were amazing, I cannot wait for the new one!</p>
+                                    <p>Ron</p>
+                                </div>
+
+                                <div class="reply">
+                                </div>
+                                <!-- .reply -->
+                            </article><!-- #comment-## -->
+                        </li><!-- #comment-## -->
+                        <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-328">
+                            <article id="comment-328" class="comment">
+                                <footer>
+                                    <div class="comment-author vcard">
+                                        <img alt='' src='http://2.gravatar.com/avatar/58272dbe420f5ca99936c1be2dbdeda9?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/58272dbe420f5ca99936c1be2dbdeda9?s=96&#038;d=mm&#038;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />					<cite class="fn"><a href='http://phpied.com' rel='external nofollow' class='url'>Stoyan</a></cite>									</div>
+                                    <!-- .comment-author .vcard -->
+                                    <div class="comment-meta commentmetadata">
+                                        <a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-0-introduction/#comment-328">
+                                            <time pubdate datetime="2010-04-29T06:40:32+00:00">
+                                                2010-04-29						</time>
+                                        </a>
+                                    </div>
+                                    <!-- .comment-meta .commentmetadata -->
+                                </footer>
+
+                                <div class="comment-content "><p>Keep &#8217;em coming Dmitry, this is just amazing content!</p>
+                                </div>
+
+                                <div class="reply">
+                                </div>
+                                <!-- .reply -->
+                            </article><!-- #comment-## -->
+                        </li><!-- #comment-## -->
+                        <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-331">
+                            <article id="comment-331" class="comment">
+                                <footer>
+                                    <div class="comment-author vcard">
+                                        <img alt='' src='http://2.gravatar.com/avatar/882f228c4993ccf0a86e96394636415c?s=48&#038;d=mm&#038;r=g' srcset='http://2.gravatar.com/avatar/882f228c4993ccf0a86e96394636415c?s=96&#038;d=mm&#038;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />					<cite class="fn"><a href='http://dmitrysoshnikov.com' rel='external nofollow' class='url'>Dmitry A. Soshnikov</a></cite>									</div>
+                                    <!-- .comment-author .vcard -->
+                                    <div class="comment-meta commentmetadata">
+                                        <a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-0-introduction/#comment-331">
+                                            <time pubdate datetime="2010-04-29T13:17:56+00:00">
+                                                2010-04-29						</time>
+                                        </a>
+                                    </div>
+                                    <!-- .comment-meta .commentmetadata -->
+                                </footer>
+
+                                <div class="comment-content "><p>@<strong>Ron Marco</strong>, @<strong>Stoyan</strong></p>
+                                    <p>thanks, colleagues.</p>
+                                    <p>Stoyan, and I wish you successes with your new book on JS patterns!</p>
+                                    <p>Dmitry.</p>
+                                </div>
+
+                                <div class="reply">
+                                </div>
+                                <!-- .reply -->
+                            </article><!-- #comment-## -->
+                        </li><!-- #comment-## -->
+                        <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-159617">
+                            <article id="comment-159617" class="comment">
+                                <footer>
+                                    <div class="comment-author vcard">
+                                        <img alt='' src='http://1.gravatar.com/avatar/7f00d99190303d775f9a1e868b4aebe7?s=48&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/7f00d99190303d775f9a1e868b4aebe7?s=96&#038;d=mm&#038;r=g 2x' class='avatar avatar-48 photo' height='48' width='48' />					<cite class="fn">Subomi</cite>									</div>
+                                    <!-- .comment-author .vcard -->
+                                    <div class="comment-meta commentmetadata">
+                                        <a href="http://dmitrysoshnikov.com/ecmascript/es5-chapter-0-introduction/#comment-159617">
+                                            <time pubdate datetime="2015-08-22T07:06:21+00:00">
+                                                2015-08-22						</time>
+                                        </a>
+                                    </div>
+                                    <!-- .comment-meta .commentmetadata -->
+                                </footer>
+
+                                <div class="comment-content "><p>Well, it has not been a norm for me to post comments, your articles have been very great. And for a little confession i downloaded all pages on ECMA-262-3 and spiral binded them into a book which have been studying day &amp; night. Am still a wannabe but with my going study and materials am su h of the future thanks bud.</p>
+                                </div>
+
+                                <div class="reply">
+                                </div>
+                                <!-- .reply -->
+                            </article><!-- #comment-## -->
+                        </li><!-- #comment-## -->
+                    </ol><!-- .commentlist -->
+
+
+
+
+
+
+                    <div id="share-comment-button-bottom">
+                        <button>
+                            <i class="share-comment-icon"></i>Write a Comment				</button>
+                    </div>
+                    <div id="commentform-bottom"></div> <!-- do not remove; used by jQuery to move the comment reply form here -->
+
+
+
+                </div><!-- #comments .comments-area -->
+
+
+
+                <div id="taglist">
+                    <ul class="taglist"><li class="taglist-title">Related Content by Tag</li><li><a href="http://dmitrysoshnikov.com/tag/es-5/" rel="tag">ECMA-262-5</a></li><li><a href="http://dmitrysoshnikov.com/tag/ecmascript/" rel="tag">ECMAScript</a></li></ul>					</div>
+
+
+            </main>
+            <!-- #content .site-content -->
+        </div><!-- #primary .content-area -->
+
+        <div id="secondary" class="widget-area" role="complementary">
+        </div><!-- #secondary .widget-area -->
+
+    </div><!-- #main .site-main -->
+
+    <footer id="colophon" class="site-footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter" role="contentinfo">
+        <div class="site-info">
+            <a href="http://independentpublisher.me" rel="designer" title="Independent Publisher: A beautiful reader-focused WordPress theme, for you.">Independent Publisher</a> empowered by <a href="http://wordpress.org/" rel="generator" title="WordPress: A free open-source publishing platform">WordPress</a>	</div>
+        <!-- .site-info -->
+    </footer><!-- #colophon .site-footer -->
+</div><!-- #page .hfeed .site -->
+
+<script type='text/javascript' src='http://dmitrysoshnikov.com/wp-content/plugins/akismet/_inc/form.js?ver=3.2'></script>
+<script type='text/javascript' src='http://dmitrysoshnikov.com/wp-content/themes/independent-publisher/js/skip-link-focus-fix.js?ver=20130115'></script>
+<script type='text/javascript' src='http://dmitrysoshnikov.com/wp-includes/js/wp-embed.min.js?ver=4.9.2'></script>
+<!--stats_footer_test--><script src="http://stats.wordpress.com/e-201803.js" type="text/javascript"></script>
+<script type="text/javascript">
+    st_go({blog:'12310956',v:'ext',post:'1170'});
+    var load_cmc = function(){linktracker_init(12310956,1170,2);};
+    if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+    else load_cmc();
+</script>
+
+</body>
+</html>
