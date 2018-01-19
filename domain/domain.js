@@ -8,17 +8,19 @@ ownDomain.on('error', err => {
     console.log(`Catched error: ${err}`);
 });
 
-var server;
+var server = http.createServer((req, res) => {});
+
 ownDomain.run(() => {
     // domain.enter();
-    server = http.createServer((req, res) => {});
+    ownDomain.add(server); // domain <--> server (possible issues with memory allocation)
+    ownDomain.remove(server);
     // domain.exit();
 });
 
 server.on('event', data => {
     setTimeout(() => {
         fs.readFile(__filename, () => {
-            console.log(process.domain, server.domain);
+            console.log(process.domain === server.domain);
             ERROR();
         });
     }, 1000);
