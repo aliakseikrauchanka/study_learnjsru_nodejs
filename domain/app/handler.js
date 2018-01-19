@@ -1,11 +1,13 @@
 const fs = require('fs');
+const redis = require('redis').createClient();
 
 module.exports = (req, res) => {
-    fs.readFile('not-existed-file', (err, file) => {
-        if (err) {
-            throw err;
-        }
-
-        res.end(file);
-    });
+    if (req.url === '/') {
+        redis.on('data', /*process.domain.bind*/((err, data) => {
+            // эту ошибку словит outerDomain, потому что
+            // const handler = require('./handler.js');
+            // делается в рамках outerDomain.run(() => {...});
+            throw new Error('Redis callback');
+        }));
+    }
 };
