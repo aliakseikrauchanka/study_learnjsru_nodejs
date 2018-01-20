@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/aliakseikrauchanka/study_learnjsru_nodejs#readme",
   "dependencies": {
+    "async": "^2.6.0",
     "jscs": "^3.0.7"
-  }
+  },
+  "devDependencies": {}
 }
