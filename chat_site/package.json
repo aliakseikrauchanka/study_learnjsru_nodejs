@@ -8,6 +8,7 @@
   "dependencies": {
     "ejs": "*",
     "express": "3.21.2",
-    "nconf": "^0.10.0"
+    "nconf": "^0.10.0",
+    "winston": "^2.4.0"
   }
 }
