@@ -20,6 +20,7 @@ http.createServer(app).listen(config.get('port'), function () {
     log.info('Express server listening on port ' + config.get('port'));
 });
 
+app.engine('ejs', require('ejs-locals'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.favicon());
@@ -37,7 +38,6 @@ app.use(express.urlencoded());
 app.use(app.router);
 app.get('/', (req, res) => {
     res.render('index.ejs', {
-        body: '<img>',
         title: 'Express app',
         user: {
             name: 'Boris',
