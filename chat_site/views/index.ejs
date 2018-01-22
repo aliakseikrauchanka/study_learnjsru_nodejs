@@ -7,5 +7,10 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <%- body%>
+    <%= body%>
+    <% if (user) { %>
+    <h2><%= user.name %></h2>
+    <% } %>
   </body>
 </html>

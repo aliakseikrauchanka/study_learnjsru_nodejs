@@ -3,7 +3,6 @@ var ENV = process.env.NODE_ENV;
 
 function logger(module) {
     var path = module.filename.split('\\').slice(-2).join('\\');
-    console.log('PATH', path);
 
     return new winston.Logger({
         transports: [
