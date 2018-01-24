@@ -1,3 +1,10 @@
 {
-  "port": 987
+  "port": 987,
+  "mongoose": {
+    "uri": "mongodb://localhost:27017/chat",
+    "options": {
+      "keepAlive": 1,
+      "connectTimeoutMS": 30000
+    }
+  }
 }

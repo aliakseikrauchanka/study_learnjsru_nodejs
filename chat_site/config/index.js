@@ -7,8 +7,8 @@ nconf
         file: path.join(__dirname, 'config.json'),
     });
 
-nconf.set('database:host', '127.0.0.1');
-nconf.set('database:port', 111);
+// nconf.set('database:host', '127.0.0.1');
+// nconf.set('database:port', 111);
 
 module.exports = nconf;
 

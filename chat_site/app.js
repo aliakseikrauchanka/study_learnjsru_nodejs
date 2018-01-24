@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -17,6 +16,7 @@ var app = express();
 app.set('port', config.get('port'));
 
 http.createServer(app).listen(config.get('port'), function () {
+    console.log(`Listening on port ${config.get('port')}`);
     log.info('Express server listening on port ' + config.get('port'));
 });
 
@@ -25,11 +25,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.favicon());
 
-if (app.get('env') === 'development') {
-    app.use(express.logger('dev'));
-} else {
-    app.use(express.logger('default'));
-}
+// if (app.get('env') === 'development') {
+//     app.use(express.logger('dev'));
+// } else {
+//     app.use(express.logger('default'));
+// }
 
 app.use(express.json());
 app.use(express.urlencoded());
