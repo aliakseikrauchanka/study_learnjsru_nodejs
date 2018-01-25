@@ -36,7 +36,7 @@ function getPhrase(name) {
 }
 
 function getPage(name) {
-    if (name !== 'index.htm') {
+    if (name !== 'index.htm') {\
         throw new HttpError(404, 'Page not found');
     }
 
