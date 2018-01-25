@@ -5,6 +5,9 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var mongoose = require('mongoose');
+
+var MongoStore = require('connect-mongo')(express);
 
 var HttpError = require('error').HttpError;
 var config = require('./config');
@@ -37,7 +40,10 @@ app.use(express.cookieParser());
 app.use(express.session({
     secret: config.get('session:secret'),
     key: config.get('session:key'),
-    cookie: config.get('sessino:cookie'),
+    cookie: config.get('session:cookie'),
+    store: new MongoStore({
+        mongooseConnection: mongoose.connection,
+    }),
 }));
 
 app.use(app.router);

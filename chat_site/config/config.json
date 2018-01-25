@@ -9,7 +9,7 @@
   },
   "session": {
     "secret": "my secret phrase",
-    "key": "sid",
+    "key": "ssid",
     "cookie": {
       "path": "/",
       "httpOnly": true,
