@@ -2,13 +2,11 @@
  * Module dependencies.
  */
 
-var domain = require('domain');
 var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 
+var HttpError = require('error').HttpError;
 var config = require('./config');
 var log = require('./libs/log')(module);
 
@@ -24,6 +22,7 @@ app.engine('ejs', require('ejs-locals'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.favicon());
+app.use(require('middleware/sendHttpError'));
 
 // if (app.get('env') === 'development') {
 //     app.use(express.logger('dev'));
@@ -33,16 +32,34 @@ app.use(express.favicon());
 
 app.use(express.json());
 app.use(express.urlencoded());
-// app.use(express.session({ secret: 'your secret here' }));
+
+app.use(express.cookieParser());
+app.use(express.session({
+    secret: config.get('session:secret'),
+    key: config.get('session:key'),
+    cookie: config.get('sessino:cookie'),
+}));
 
 app.use(app.router);
-app.get('/', (req, res) => {
-    res.render('index.ejs', {
-        title: 'Express app',
-        user: {
-            name: 'Boris',
-        },
-    });
+
+require('routes')(app);
+app.use(function (err, req, res, next) {
+    if (typeof err === 'number') {
+        err = new HttpError(err);
+    }
+
+    if (err instanceof HttpError) {
+        res.sendHttpError(err);
+    } else {
+        if (app.get('env') === 'development') {
+            var errorHandler = express.errorHandler();
+            errorHandler(err, req, res, next);
+        } else {
+            log.error(err);
+            err = new HttpError(500);
+            res.sendHttpError(err);
+        }
+    }
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
