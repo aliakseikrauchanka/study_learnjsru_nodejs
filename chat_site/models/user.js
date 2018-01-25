@@ -42,4 +42,28 @@ schema.methods.checkPassword = function (password) {
     return this.encryptPassword(password) === this.hashedPassword;
 };
 
-exports.User = mongoose.model('User', schema);
+schema.statics.authorize = async function (username, password) {
+    let user = await this.findOne({ username: username });
+
+    if (!user) {
+        user = new User({
+            username: username,
+            password: password,
+        });
+    } else if (user && !user.checkPassword(password)) {
+        throw new AuthError();
+    }
+
+    return user;
+};
+
+class AuthError extends Error {
+    constructor(message) {
+        super(message);
+    }
+}
+AuthError.prototype.name = 'AuthError';
+
+exports.AuthError = AuthError;
+var User = mongoose.model('User', schema);
+exports.User = User;
