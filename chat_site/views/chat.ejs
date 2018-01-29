@@ -1,6 +1,47 @@
 <% layout('layouts/page') -%>
 <% block('title', 'Index.ejs title')%>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+
 <p class="lead">Chat goes here!</p>
 
-<p>Hello, <%= userId %></p>
+<ul id="messages"></ul>
+
+<form id='f'><input id='input'type="text"></form>
+
+<% if (user) { %>
+<p>Hello, <%= user.get('username') %></p>
+<% }%>
+
+<script>
+    function addLi(data) {
+        $('<li>')
+            .text(data)
+            .appendTo('#messages');
+    }
+
+    var socket = io.connect('http://localhost:987');
+
+    socket.on('merror', function() {
+        addLi('ERROR happened');
+    });
+
+    socket.on('connect', function() {
+        addLi('CONNECTED');
+    });
+
+    socket.on('disconnect', function() {
+        addLi('DISCONNECTED');
+    });
+
+    $('#f').on('submit', function(e) {
+        e.preventDefault();
+        socket.emit('message', $('#input').val(), function(data) {
+            addLi(data);
+        }) ;
+        return false;
+    });
+    socket.on('server:message', function(text) {
+        addLi(text);
+    });
+</script>

@@ -1,13 +1,16 @@
 <nav class="navbar navbar-default" role="navigation">
     <ul class="nav navbar-nav">
         <li><a href="/">Главная</a></li>
-        <% if (locals.user) { %>
+        <% if (user) { %>
         <li><a href="/chat">Чат</a></li>
         <% } %>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <% if (locals.user) { %>
-        <li><a href="" onclick="$('<form method=POST action=/logout>').submit();return false">Выйти</a></form></li>
+        <% if (user) { %>
+        <form method="post" action="/logout">
+            <button type="submit">Выйти</button>
+        </form>
+
         <% } else { %>
         <li><a href="/login">Войти</a></li>
         <% } %>

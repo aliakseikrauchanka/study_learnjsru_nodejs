@@ -54,7 +54,8 @@ schema.statics.authorize = async function (username, password) {
         throw new AuthError();
     }
 
-    return user;
+    let userr = await user.save();
+    return userr;
 };
 
 class AuthError extends Error {
@@ -65,5 +66,6 @@ class AuthError extends Error {
 AuthError.prototype.name = 'AuthError';
 
 exports.AuthError = AuthError;
+
 var User = mongoose.model('User', schema);
 exports.User = User;
